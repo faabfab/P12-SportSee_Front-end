@@ -7,12 +7,20 @@
   height: 90.2vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
   &_nav {
     display: flex;
     flex-direction: column;
     & img {
       margin-bottom: 20px;
     }
+  }
+  &_copyright {
+    rotate: -90deg;
+    padding: 0px;
+    font-size: 12px;
+    width: max-content;
+    padding-right: 80px;
   }
 }

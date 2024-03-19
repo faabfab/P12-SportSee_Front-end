@@ -1,0 +1,30 @@
+@import './../variables';
+
+.calorie,
+.protein,
+.carbohydrate,
+.lipid {
+  width: 258px;
+  height: 124px;
+  border-radius: 5px;
+  background-color: $grey-light;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  & img {
+    width: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.cardKeyData {
+  &_content {
+    font-size: 20px;
+    font-weight: bold;
+    &_span {
+      font-size: 14px;
+      color: $grey;
+    }
+  }
+}

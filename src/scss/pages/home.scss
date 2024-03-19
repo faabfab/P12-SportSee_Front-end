@@ -4,4 +4,45 @@
   &_firstname {
     color: $red;
   }
+  &_infos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    &_keyData {
+      width: 260px;
+    }
+    &_activities {
+      width: 100%;
+      margin-right: 30px;
+      &_weight {
+        height: 320px;
+        background-color: $grey-light;
+        border-radius: 5px;
+      }
+      &_part2 {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        &_average-sessions,
+        &_performances,
+        &_score {
+          width: 260px;
+          height: 265px;
+          border-radius: 5px;
+        }
+        &_average-sessions {
+          background-color: $red;
+          color: white;
+        }
+        &_performances {
+          background-color: $black;
+          color: white;
+        }
+        &_score {
+          background-color: $grey-light;
+        }
+      }
+    }
+  }
 }

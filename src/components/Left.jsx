@@ -22,6 +22,7 @@ function Left() {
           <img src={icon4} alt="icon4" />
         </Link>
       </div>
+      <dir className="left_copyright">Copiryght, SportSee 2020</dir>
     </div>
   )
 }
