@@ -1,0 +1,55 @@
+@import './../variables';
+
+.weight {
+  padding: 30px;
+  &_text {
+    display: flex;
+    justify-content: space-between;
+    &_title {
+      color: $blue-dark;
+      font-size: 15px;
+      font-weight: bold;
+      position: absolute;
+    }
+    &_infos {
+      color: $grey;
+      font-size: 14px;
+      font-weight: bold;
+      &_blue,
+      &_red {
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      &_blue {
+        background-color: $blue-dark;
+      }
+      &_red {
+        background-color: $red;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+// chat
+
+.recharts-legend-wrapper {
+  top: 0px !important;
+}
+.recharts-default-legend {
+  text-align: right !important;
+}
+.recharts-legend-item-text {
+  color: $grey !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+
+.recharts-tooltip-wrapper,
+.recharts-default-tooltip {
+  background-color: $red !important;
+  border: 0px !important;
+}
