@@ -1,0 +1,19 @@
+.sessions {
+  &_title {
+    width: 148px;
+    margin-top: 40px;
+    margin-left: 30px;
+    opacity: 0.5;
+  }
+  & .recharts-text {
+    fill: white !important;
+    opacity: 0.5 !important;
+  }
+  .recharts-tooltip-wrapper,
+  .recharts-default-tooltip {
+    background-color: white !important;
+    border: 0px !important;
+    color: black !important;
+    // font-size: 7px !important;
+  }
+}

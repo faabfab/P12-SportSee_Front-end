@@ -52,4 +52,17 @@
 .recharts-default-tooltip {
   background-color: $red !important;
   border: 0px !important;
+  font-size: 7px !important;
+}
+.recharts-default-tooltip {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+}
+.recharts-legend-item {
+  margin-left: 30px !important;
+}
+.recharts-legend-item-text {
+  margin-left: 10px !important;
 }
