@@ -1,5 +1,5 @@
 import React from 'react'
-import './../scss/components/averageSessions.scss'
+import './../../scss/components/charts/averageSessionsLineChart.scss'
 import {
   LineChart,
   //CartesianGrid,

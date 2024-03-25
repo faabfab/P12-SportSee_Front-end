@@ -1,5 +1,5 @@
 import React from 'react'
-import './../scss/components/weight.scss'
+import './../../scss/components/charts/activityBarChart.scss'
 import {
   BarChart,
   CartesianGrid,

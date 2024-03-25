@@ -6,10 +6,10 @@ import UserAverageSessions from './../datas/user_average-sessions.json'
 import UserPerformances from './../datas/user_performance.json'
 import Hello from '../components/Hello'
 import KeyData from './../components/KeyData'
-import Weight from './../components/Weight'
-import AverageSessions from '../components/AverageSessions'
-import Performances from './../components/Performances'
-import Score from './../components/Score'
+import Weight from '../components/charts/ActivityBarChart'
+import AverageSessions from '../components/charts/AverageSessionsLineChart'
+import Performances from '../components/charts/PerformancesRadarChart'
+import Score from '../components/charts/ScorePieChart'
 
 function Home() {
   return (
