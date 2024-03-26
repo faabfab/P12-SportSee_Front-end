@@ -11,6 +11,12 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+/**
+ *
+ * @param {*} param0
+ * @returns
+ */
+
 function Weight({ activity }) {
   const tooltipLabelStyle = {
     display: 'none',
@@ -60,6 +66,20 @@ function Weight({ activity }) {
     return <span>{value}</span>
   }
 
+  const xTickFormat = (x) => {
+    let i = 0
+    activity.forEach((act) => {
+      if (act.day === x) {
+        i = activity.indexOf(act)
+      }
+    })
+    return i + 1
+  }
+
+  const yTickFormat = (y) => {
+    return y / 1000
+  }
+
   return (
     <React.StrictMode>
       <div className="weight">
@@ -67,12 +87,18 @@ function Weight({ activity }) {
         <ResponsiveContainer width="100%" height={270}>
           <BarChart data={activity}>
             <CartesianGrid strokeDasharray="1 3" vertical={false} />
-            <XAxis dataKey="day" axisLine={false} tickLine={false} />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={xTickFormat}
+            />
             <YAxis
               orientation="right"
               dataKey="calories"
               axisLine={false}
               tickLine={false}
+              tickFormatter={yTickFormat}
             />
             <Tooltip
               separator=""
@@ -81,6 +107,7 @@ function Weight({ activity }) {
               contentStyle={tooltipWrapperStyle}
               labelStyle={tooltipLabelStyle}
               content={<CustomTooltip />}
+              cursor={{ fill: '#DFDFDF' }}
             />
             <Legend
               verticalAlign="top"

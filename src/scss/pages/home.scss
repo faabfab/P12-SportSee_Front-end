@@ -10,10 +10,10 @@
     justify-content: space-between;
     margin-top: 100px;
     &_keyData {
-      width: 260px;
+      width: 20%;
     }
     &_activities {
-      width: 100%;
+      width: 80%;
       margin-right: 30px;
       &_weight {
         height: 320px;
@@ -27,7 +27,7 @@
         &_average-sessions,
         &_performances,
         &_score {
-          width: 260px;
+          width: 30%;
           height: 265px;
           overflow: hidden;
           border-radius: 5px;
@@ -39,6 +39,8 @@
         &_performances {
           background-color: $black;
           color: white;
+          display: flex;
+          align-items: center;
         }
         &_score {
           background-color: $grey-light;

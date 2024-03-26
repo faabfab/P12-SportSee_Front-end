@@ -1,6 +1,7 @@
 import React from 'react'
 import './../../scss/components/charts/averageSessionsLineChart.scss'
 import {
+  ResponsiveContainer,
   LineChart,
   //CartesianGrid,
   XAxis,
@@ -27,6 +28,7 @@ function AverageSessions({ averageSessions }) {
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
+    backgroundColor: 'white',
   }
 
   const CustomTooltip = ({ active, payload }) => {
@@ -40,26 +42,56 @@ function AverageSessions({ averageSessions }) {
     return null
   }
 
+  const xFormatDay = (x) => {
+    switch (x) {
+      case 1:
+        return 'L'
+      case 2:
+        return 'M'
+      case 3:
+        return 'M'
+      case 4:
+        return 'J'
+      case 5:
+        return 'V'
+      case 6:
+        return 'S'
+      case 7:
+        return 'D'
+      default:
+        break
+    }
+  }
+
   return (
     <React.StrictMode>
       <div className="sessions">
         <div className="sessions_title">Durée moyenne des sessions</div>
-        <LineChart width={260} height={130} data={averageSessions}>
-          <XAxis dataKey="day" axisLine={false} tickLine={false} />
-          <Tooltip
-            labelStyle={tooltipLabelStyle}
-            itemStyle={tooltipItemStyle}
-            content={<CustomTooltip />}
-            cursor={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="sessionLength"
-            stroke="#FFFFFF"
-            strokeWidth={2}
-            dot={false}
-          />
-        </LineChart>
+        <ResponsiveContainer width="100%" height={180}>
+          <LineChart data={averageSessions}>
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={xFormatDay}
+              fill="#ffffff"
+              tick={{ fill: 'white', opacity: 0.5, fontSize: '15px' }}
+            />
+            <Tooltip
+              labelStyle={tooltipLabelStyle}
+              itemStyle={tooltipItemStyle}
+              content={<CustomTooltip />}
+              cursor={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="sessionLength"
+              stroke="#FFFFFF"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </React.StrictMode>
   )
