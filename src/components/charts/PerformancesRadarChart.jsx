@@ -12,8 +12,6 @@ function Performances({ perfsKind, perfsData }) {
   //console.log(kindArray.forEach((e) => console.log(e[0], e[1])))
 
   const kindFormatter = (perfsData) => {
-    console.log(kindArray[perfsData - 1][1])
-
     // return kindArray[perfsData - 1][1]
 
     switch (kindArray[perfsData - 1][1]) {
@@ -29,7 +27,6 @@ function Performances({ perfsKind, perfsData }) {
         return 'Vitesse'
       case 'intensity':
         return 'Intensité'
-
       default:
         break
     }
@@ -46,32 +43,16 @@ function Performances({ perfsKind, perfsData }) {
           margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
         >
           <PolarGrid gridType="circle" />
-          <PolarAngleAxis dataKey="kind" tickFormatter={kindFormatter} />
+          <PolarAngleAxis
+            dataKey="kind"
+            tickFormatter={kindFormatter}
+            tick={{ fill: 'white', fontSize: '12px' }}
+          />
           <Radar name="" dataKey="value" fill="#ff0101" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
     </React.StrictMode>
   )
-  /*
-  var arrayperfsKind = []
-  for (const [key, value] of Object.entries(perfsKind)) {
-    arrayperfsKind.push(`${key}: ${value}`)
-  }
-  return (
-    <React.StrictMode>
-      {arrayperfsKind.map((kind) => {
-        return <p key={arrayperfsKind.indexOf(kind)}>{kind}</p>
-      })}
-      {perfsData.map((perfdata) => {
-        return (
-          <p key={perfdata.kind}>
-            valeur :{perfdata.value} - kind : {perfdata.kind}
-          </p>
-        )
-      })}
-    </React.StrictMode>
-  )
-  */
 }
 
 export default Performances

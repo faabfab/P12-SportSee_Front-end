@@ -1,0 +1,32 @@
+@import './../../variables';
+
+.score {
+  &_chart,
+  &_title,
+  &_text {
+    position: relative;
+  }
+  &_title {
+    top: 20px;
+    left: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: $blue-dark;
+  }
+  &_text {
+    top: 50px;
+    left: 40%;
+    z-index: 2;
+    width: 78px;
+    font-size: 16px;
+    color: $grey;
+    & span {
+      font-size: 26px;
+      font-weight: bold;
+      color: $blue-dark;
+    }
+  }
+  &_chart {
+    top: -100px;
+  }
+}

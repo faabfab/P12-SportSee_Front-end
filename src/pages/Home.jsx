@@ -34,7 +34,7 @@ function Home() {
               />
             </div>
             <div className="home_infos_activities_part2_score">
-              <Score userScore={User.data.score} />
+              <Score userScore={User.data} />
             </div>
           </div>
         </div>
