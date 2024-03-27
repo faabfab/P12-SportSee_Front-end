@@ -1,4 +1,5 @@
 import React from 'react'
+import ApiCall from './../ApiCall'
 import './../../scss/components/charts/activityBarChart.scss'
 import {
   BarChart,
@@ -11,13 +12,9 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-/**
- *
- * @param {*} param0
- * @returns
- */
+function Weight({ apiUrl }) {
+  const [error, isLoaded, items] = ApiCall(apiUrl)
 
-function Weight({ activity }) {
   const tooltipLabelStyle = {
     display: 'none',
   }
@@ -68,9 +65,9 @@ function Weight({ activity }) {
 
   const xTickFormat = (x) => {
     let i = 0
-    activity.forEach((act) => {
+    items.data.sessions.forEach((act) => {
       if (act.day === x) {
-        i = activity.indexOf(act)
+        i = items.data.sessions.indexOf(act)
       }
     })
     return i + 1
@@ -80,60 +77,66 @@ function Weight({ activity }) {
     return y / 1000
   }
 
-  return (
-    <React.StrictMode>
-      <div className="weight">
-        <div className="weight_text_title">Activité quotidienne</div>
-        <ResponsiveContainer width="100%" height={270}>
-          <BarChart data={activity}>
-            <CartesianGrid strokeDasharray="1 3" vertical={false} />
-            <XAxis
-              dataKey="day"
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={xTickFormat}
-            />
-            <YAxis
-              orientation="right"
-              dataKey="calories"
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={yTickFormat}
-            />
-            <Tooltip
-              separator=""
-              wrapperStyle={tooltipWrapperStyle}
-              itemStyle={tooltipItemStyle}
-              contentStyle={tooltipWrapperStyle}
-              labelStyle={tooltipLabelStyle}
-              content={<CustomTooltip />}
-              cursor={{ fill: '#DFDFDF' }}
-            />
-            <Legend
-              verticalAlign="top"
-              height={80}
-              iconType="circle"
-              iconSize="7"
-              margin={{ top: 0, left: '20px', right: 0, bottom: 0 }}
-              formatter={renderLegendText}
-            />
-            <Bar
-              dataKey="kilogram"
-              fill="#282D30"
-              barSize={7}
-              radius={[3, 3, 0, 0]}
-            />
-            <Bar
-              dataKey="calories"
-              fill="#E60000"
-              barSize={7}
-              radius={[3, 3, 0, 0]}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </React.StrictMode>
-  )
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return (
+      <React.StrictMode>
+        <div className="weight">
+          <div className="weight_text_title">Activité quotidienne</div>
+          <ResponsiveContainer width="100%" height={270}>
+            <BarChart data={items.data.sessions}>
+              <CartesianGrid strokeDasharray="1 3" vertical={false} />
+              <XAxis
+                dataKey="day"
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={xTickFormat}
+              />
+              <YAxis
+                orientation="right"
+                dataKey="calories"
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={yTickFormat}
+              />
+              <Tooltip
+                separator=""
+                wrapperStyle={tooltipWrapperStyle}
+                itemStyle={tooltipItemStyle}
+                contentStyle={tooltipWrapperStyle}
+                labelStyle={tooltipLabelStyle}
+                content={<CustomTooltip />}
+                cursor={{ fill: '#DFDFDF' }}
+              />
+              <Legend
+                verticalAlign="top"
+                height={80}
+                iconType="circle"
+                iconSize="7"
+                margin={{ top: 0, left: '20px', right: 0, bottom: 0 }}
+                formatter={renderLegendText}
+              />
+              <Bar
+                dataKey="kilogram"
+                fill="#282D30"
+                barSize={7}
+                radius={[3, 3, 0, 0]}
+              />
+              <Bar
+                dataKey="calories"
+                fill="#E60000"
+                barSize={7}
+                radius={[3, 3, 0, 0]}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </React.StrictMode>
+    )
+  }
 }
 
 export default Weight

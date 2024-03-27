@@ -1,17 +1,11 @@
 import React from 'react'
+import ApiCall from './../ApiCall'
 import './../../scss/components/charts/averageSessionsLineChart.scss'
-import {
-  ResponsiveContainer,
-  LineChart,
-  //CartesianGrid,
-  XAxis,
-  //YAxis,
-  Tooltip,
-  //Legend,
-  Line,
-} from 'recharts'
+import { ResponsiveContainer, LineChart, XAxis, Tooltip, Line } from 'recharts'
 
-function AverageSessions({ averageSessions }) {
+function AverageSessions({ apiUrl }) {
+  const [error, isLoaded, items] = ApiCall(apiUrl)
+
   const tooltipLabelStyle = {
     display: 'none',
   }
@@ -63,38 +57,44 @@ function AverageSessions({ averageSessions }) {
     }
   }
 
-  return (
-    <React.StrictMode>
-      <div className="sessions">
-        <div className="sessions_title">Durée moyenne des sessions</div>
-        <ResponsiveContainer width="100%" height={180}>
-          <LineChart data={averageSessions}>
-            <XAxis
-              dataKey="day"
-              axisLine={false}
-              tickLine={false}
-              tickFormatter={xFormatDay}
-              fill="#ffffff"
-              tick={{ fill: 'white', opacity: 0.5, fontSize: '15px' }}
-            />
-            <Tooltip
-              labelStyle={tooltipLabelStyle}
-              itemStyle={tooltipItemStyle}
-              content={<CustomTooltip />}
-              cursor={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="sessionLength"
-              stroke="#FFFFFF"
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    </React.StrictMode>
-  )
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return (
+      <React.StrictMode>
+        <div className="sessions">
+          <div className="sessions_title">Durée moyenne des sessions</div>
+          <ResponsiveContainer width="100%" height={180}>
+            <LineChart data={items.data.sessions}>
+              <XAxis
+                dataKey="day"
+                axisLine={false}
+                tickLine={false}
+                tickFormatter={xFormatDay}
+                fill="#ffffff"
+                tick={{ fill: 'white', opacity: 0.5, fontSize: '15px' }}
+              />
+              <Tooltip
+                labelStyle={tooltipLabelStyle}
+                itemStyle={tooltipItemStyle}
+                content={<CustomTooltip />}
+                cursor={false}
+              />
+              <Line
+                type="monotone"
+                dataKey="sessionLength"
+                stroke="#FFFFFF"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </React.StrictMode>
+    )
+  }
 }
 
 export default AverageSessions

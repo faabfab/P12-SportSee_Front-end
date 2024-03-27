@@ -11,7 +11,7 @@ function CardKeyData({ name, content }) {
     case 'calorie':
       spanTraduction = 'Calories'
       img = calorieIcon
-      unit = 'Cal'
+      unit = 'KCal'
       break
     case 'protein':
       spanTraduction = 'Protéines'
