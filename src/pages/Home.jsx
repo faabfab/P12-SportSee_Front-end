@@ -1,6 +1,5 @@
 import React from 'react'
 import './../scss/pages/home.scss'
-import UserPerformances from './../datas/user_performance.json'
 import FirstName from '../components/FirstName'
 import KeyData from '../components/KeyDataCard'
 import ActivityBarChart from '../components/charts/ActivityBarChart'
@@ -27,10 +26,7 @@ function Home() {
               <AverageSessionsLineChart apiUrl="http://localhost:3000/user/18/average-sessions" />
             </div>
             <div className="home_infos_activities_part2_performances">
-              <PerformancesRadarChart
-                perfsKind={UserPerformances.data.kind}
-                apiUrl="http://localhost:3000/user/18/performance"
-              />
+              <PerformancesRadarChart apiUrl="http://localhost:3000/user/18/performance" />
             </div>
             <div className="home_infos_activities_part2_score">
               <ScoreRadialChart apiUrl="http://localhost:3000/user/18" />
