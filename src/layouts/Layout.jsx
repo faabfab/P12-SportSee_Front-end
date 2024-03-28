@@ -4,6 +4,10 @@ import LeftNav from '../components/LeftNav'
 import { Outlet } from 'react-router-dom'
 import './../scss/layout/layout.scss'
 
+/**
+ * Composant retournant la mise en page du site
+ * @returns Layout
+ */
 function Layout() {
   return (
     <React.StrictMode>

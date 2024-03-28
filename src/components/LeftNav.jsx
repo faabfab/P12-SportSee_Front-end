@@ -5,6 +5,10 @@ import icon2 from './../assets/img/icon2.svg'
 import icon3 from './../assets/img/icon3.svg'
 import icon4 from './../assets/img/icon4.svg'
 
+/**
+ * Composant qui affiche la navigation de gauche du site
+ * @returns LeftNav
+ */
 function LeftNav() {
   return (
     <div className="left">

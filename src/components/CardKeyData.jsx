@@ -3,6 +3,12 @@ import proteinIcon from './../assets/img/protein-icon.svg'
 import carbohydrateIcon from './../assets/img/carbohydrate-icon.svg'
 import lipidIcon from './../assets/img/lipid-icon.svg'
 
+/**
+ * Composant qui affiche en français les informations clés sous forme de card
+ * @param {string} name Le nom de l'élément
+ * @param {string} content La valeur de l'élément
+ * @returns CardKeyData
+ */
 function CardKeyData({ name, content }) {
   let spanTraduction = ''
   let img = ''

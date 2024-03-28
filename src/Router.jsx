@@ -4,6 +4,9 @@ import Layout from './layouts/Layout'
 import Home from './pages/Home'
 import Test from './pages/Test'
 
+/**
+ * Router de l'application
+ */
 const router = createBrowserRouter([
   {
     path: '/',

@@ -1,9 +1,14 @@
 import React from 'react'
 import CardKeyData from './CardKeyData'
 import ApiCall from './ApiCall'
-import '../scss/components/keyData.scss'
+import '../scss/components/keyDataCard.scss'
 
-function keyData({ apiUrl }) {
+/**
+ * Composant qui renvoi les informations clés de l'utilisateur
+ * @param {URL} param0 url de l'api contenant les informations utiles
+ * @returns keyDataCard
+ */
+function keyDataCard({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   if (error) {
@@ -28,4 +33,4 @@ function keyData({ apiUrl }) {
   }
 }
 
-export default keyData
+export default keyDataCard

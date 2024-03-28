@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * Composant qui retourne les information de l'api suivant une url sous forme de tableau de 3 éléments
+ * @param {URL} apiUrl url de l'api contenant les informations utiles
+ * @returns [error, isLoaded, items]
+ */
 function ApiCall(apiUrl) {
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -24,9 +29,6 @@ function ApiCall(apiUrl) {
         }
       )
   }, [apiUrl])
-  // console.log(error)
-  // console.log(isLoaded)
-  // console.log(items)
   return [error, isLoaded, items]
 }
 

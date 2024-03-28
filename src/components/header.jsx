@@ -3,6 +3,10 @@ import './../scss/components/header.scss'
 import logo from './../assets/img/logo.svg'
 import { Link } from 'react-router-dom'
 
+/**
+ * Composant qui affiche le Header du site
+ * @returns Header
+ */
 function Header() {
   return (
     <React.StrictMode>

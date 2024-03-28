@@ -3,6 +3,11 @@ import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import './../../scss/components/charts/scorePieChart.scss'
 import ApiCall from './../ApiCall'
 
+/**
+ * Composant qui affiche le score moyen sous forme d’un RadialBarChart en le récupérant sur l'api
+ * @param {URL} param0 url de l'api contenant les informations utiles
+ * @returns ScoreRadialBarChart
+ */
 function ScoreRadialBarChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 

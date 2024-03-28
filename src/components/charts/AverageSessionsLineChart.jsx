@@ -3,6 +3,11 @@ import ApiCall from './../ApiCall'
 import './../../scss/components/charts/averageSessionsLineChart.scss'
 import { ResponsiveContainer, LineChart, XAxis, Tooltip, Line } from 'recharts'
 
+/**
+ * Composant qui affichant la durée moyenne des sessions de l'utilisateur sous la forme d’un LineChart
+ * @param {URL} param0 url de l'api contenant les informations utiles
+ * @returns AverageSessionsLineChart
+ */
 function AverageSessionsLineChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 

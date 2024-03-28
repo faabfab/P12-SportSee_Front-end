@@ -1,6 +1,11 @@
 import React from 'react'
 import ApiCall from './ApiCall'
 
+/**
+ * Composant qui retourne le prénom de l'utilisateur sur le dashboard
+ * @param {URL} param0 url de l'api contenant les informations utiles
+ * @returns FirstName
+ */
 function FirstName({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 

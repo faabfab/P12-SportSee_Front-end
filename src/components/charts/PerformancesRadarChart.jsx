@@ -12,7 +12,6 @@ function PerformancesRadarChart({ apiUrl, perfsKind }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   //console.log(Object.entries(items.data.kind))
-
   // const kindArray = Object.entries(items.data.kind)
 
   const kindArray = Object.entries(perfsKind)

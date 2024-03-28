@@ -8,6 +8,10 @@ import AverageSessionsLineChart from '../components/charts/AverageSessionsLineCh
 import PerformancesRadarChart from '../components/charts/PerformancesRadarChart'
 import ScoreRadialChart from '../components/charts/ScoreRadialBarChart'
 
+/**
+ * Composant qui retourne la homepage du site
+ * @returns HomePage
+ */
 function Home() {
   return (
     <React.StrictMode>

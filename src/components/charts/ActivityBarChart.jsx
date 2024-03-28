@@ -12,6 +12,11 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+/**
+ * Composant qui affiche l'activité quotidienne sous forme d’un BarChart de l'utilisateur
+ * @param {URL} param0 url de l'api contenant les informations utiles
+ * @returns ActivityBarChart
+ */
 function ActivityBarChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
