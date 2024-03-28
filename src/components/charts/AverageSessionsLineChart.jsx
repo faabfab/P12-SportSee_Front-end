@@ -3,7 +3,7 @@ import ApiCall from './../ApiCall'
 import './../../scss/components/charts/averageSessionsLineChart.scss'
 import { ResponsiveContainer, LineChart, XAxis, Tooltip, Line } from 'recharts'
 
-function AverageSessions({ apiUrl }) {
+function AverageSessionsLineChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   const tooltipLabelStyle = {
@@ -97,4 +97,4 @@ function AverageSessions({ apiUrl }) {
   }
 }
 
-export default AverageSessions
+export default AverageSessionsLineChart

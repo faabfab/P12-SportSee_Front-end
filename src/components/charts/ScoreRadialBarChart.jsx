@@ -3,7 +3,7 @@ import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import './../../scss/components/charts/scorePieChart.scss'
 import ApiCall from './../ApiCall'
 
-function Score({ apiUrl }) {
+function ScoreRadialBarChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   const data = [
@@ -52,4 +52,4 @@ function Score({ apiUrl }) {
   }
 }
 
-export default Score
+export default ScoreRadialBarChart

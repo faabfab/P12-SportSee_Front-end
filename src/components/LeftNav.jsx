@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import './../scss/components/left.scss'
+import './../scss/components/leftNav.scss'
 import icon1 from './../assets/img/icon1.svg'
 import icon2 from './../assets/img/icon2.svg'
 import icon3 from './../assets/img/icon3.svg'
 import icon4 from './../assets/img/icon4.svg'
 
-function Left() {
+function LeftNav() {
   return (
     <div className="left">
       <div className="left_nav">
@@ -22,9 +22,9 @@ function Left() {
           <img src={icon4} alt="icon4" />
         </Link>
       </div>
-      <dir className="left_copyright">Copiryght, SportSee 2020</dir>
+      <dir className="left_copyright">Copyright, SportSee 2020</dir>
     </div>
   )
 }
 
-export default Left
+export default LeftNav

@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-function Weight({ apiUrl }) {
+function ActivityBarChart({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   const tooltipLabelStyle = {
@@ -139,4 +139,4 @@ function Weight({ apiUrl }) {
   }
 }
 
-export default Weight
+export default ActivityBarChart

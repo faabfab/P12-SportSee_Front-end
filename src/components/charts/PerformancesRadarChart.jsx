@@ -8,7 +8,7 @@ import {
   Radar,
 } from 'recharts'
 
-function Performances({ apiUrl, perfsKind }) {
+function PerformancesRadarChart({ apiUrl, perfsKind }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   //console.log(Object.entries(items.data.kind))
@@ -63,4 +63,4 @@ function Performances({ apiUrl, perfsKind }) {
   }
 }
 
-export default Performances
+export default PerformancesRadarChart

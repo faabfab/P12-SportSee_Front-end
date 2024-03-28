@@ -1,7 +1,7 @@
 import React from 'react'
 import ApiCall from './ApiCall'
 
-function Hello({ apiUrl }) {
+function FirstName({ apiUrl }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   if (error) {
@@ -22,4 +22,4 @@ function Hello({ apiUrl }) {
   }
 }
 
-export default Hello
+export default FirstName

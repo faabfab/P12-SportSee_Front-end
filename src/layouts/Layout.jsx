@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../components/header'
-import Left from '../components/Left'
+import Header from '../components/Header'
+import LeftNav from '../components/LeftNav'
 import { Outlet } from 'react-router-dom'
 import './../scss/layout/layout.scss'
 
@@ -9,7 +9,7 @@ function Layout() {
     <React.StrictMode>
       <Header />
       <div className="container">
-        <Left />
+        <LeftNav />
         <main>
           <Outlet />
         </main>
