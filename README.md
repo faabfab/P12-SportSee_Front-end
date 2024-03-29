@@ -1,41 +1,66 @@
-<h1 align="center">Welcome to SportSee dashboard Front-end project 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-</p>
+<div align="center">
+<img alt="Lodo" src="https://raw.githubusercontent.com/faabfab/P12-SportSee_Front-end/6374d0f752f8f5a2e3e2f9b1091e8744b6506149/src/assets/img/logo.svg" />
+</div>
+
+# SportSee dashboard Front-end project
+
+![img](https://img.shields.io/badge/Version-0.1.0-blue)
 
 > Dashboard of the SportSee site users
 
-## Install
+## Authors
 
-```sh
-yarn install
+- [@faabfab](https://github.com/faabfab)
+
+## Run Locally
+
+### Requirements
+
+- [![Node](https://img.shields.io/badge/Node-gray?style=flat-square&logo=nodedotjs&logoColor=339933&link=https://nodejs.org/en)](https://nodejs.org/en)
+- [![NPM](https://img.shields.io/badge/NPM-gray?style=flat-square&logo=npm&logoColor=CB3837&link=https://www.npmjs.com/)](https://www.npmjs.com/) ou [![Yarn](https://img.shields.io/badge/Yarn-gray?style=flat-square&logo=yarn&logoColor=2C8EBB&link=https://classic.yarnpkg.com/en/)](https://classic.yarnpkg.com/en/)
+
+### Install
+
+Clone the project
+
+```bash
+  git clone https://github.com/faabfab/P12-SportSee_Front-end.git
 ```
 
-## Usage
+Go to the project directory
 
-```sh
-yarn run start
+```bash
+  cd P12-SportSee_Front-end
 ```
 
-## Run tests
+Install dependencies
 
-```sh
-yarn run test
+```bash
+  npm install
 ```
 
-## Author
+Start the server
 
-👤 **Escobar Fabrice**
+```bash
+  npm run start
+```
 
-* Github: [@faabfab](https://github.com/faabfab)
+## Tech Stack
 
-## 🤝 Contributing
+[![React](https://img.shields.io/badge/React-grey?style=flat-square&logo=react&logoColor=61DAFB&link=https://react.dev/)](https://react.dev/) [![React Router](https://img.shields.io/badge/React_Router-grey?style=flat-square&logo=reactrouter&logoColor=CA4245&link=https://reactrouter.com/en/main)](https://reactrouter.com/en/main) [![Recharts](https://img.shields.io/badge/Recharts-grey?style=flat-square&logo=recharts&logoColor=CA4245&link=https://recharts.org/en-US/)](https://recharts.org/en-US/) [![Sass](https://img.shields.io/badge/Sass-grey?style=flat-square&logo=sass&logoColor=CC6699&link=https://sass-lang.com/)](https://sass-lang.com/)
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/faabfab/P12-SportSee_Front-end/issues). 
+## Documentation
 
-## Show your support
+[Documentation](https://linktodocumentation)
 
-Give a ⭐️ if this project helped you!
+## API Reference
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+See on : [![Api on GitHub](https://img.shields.io/badge/ReactP12--SportSee__back--end--dashboard-grey?style=flat-square&logo=github&logoColor=white&link=https://github.com/faabfab/P12-SportSee_back-end-dashboard)](https://github.com/faabfab/P12-SportSee_back-end-dashboard)
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
