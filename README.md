@@ -4,19 +4,19 @@
 
 # SportSee dashboard Front-end project
 
-![img](https://img.shields.io/badge/Version-0.1.0-blue)
+![img](https://img.shields.io/badge/Version-0.1.0-blue?style=flat-square)
 
 > Dashboard of the SportSee site users
 
 ## 1. Authors
 
-- [@faabfab](https://github.com/faabfab)
+[![@faabfab](https://img.shields.io/badge/|-@faabfab-red?style=flat-square&logo=github&logoColor=white&link=https://github.com/faabfab)](https://github.com/faabfab)
 
 ## 2. Run Locally
 
 ### 2.1 Requirements
 
-- [![Node](https://img.shields.io/badge/Node-gray?style=flat-square&logo=nodedotjs&logoColor=339933&link=https://nodejs.org/en)](https://nodejs.org/en)
+- [![Node](https://img.shields.io/badge/Node-grey?style=flat-square&logo=nodedotjs&logoColor=339933&link=https://nodejs.org/en)](https://nodejs.org/en)
 - [![NPM](https://img.shields.io/badge/NPM-gray?style=flat-square&logo=npm&logoColor=CB3837&link=https://www.npmjs.com/)](https://www.npmjs.com/) ou [![Yarn](https://img.shields.io/badge/Yarn-gray?style=flat-square&logo=yarn&logoColor=2C8EBB&link=https://classic.yarnpkg.com/en/)](https://classic.yarnpkg.com/en/)
 
 ### 2.2 Install
@@ -55,7 +55,7 @@ Start the server
 
 ## 5. API Reference
 
-See on : [![Api on GitHub](https://img.shields.io/badge/ReactP12--SportSee__back--end--dashboard-grey?style=flat-square&logo=github&logoColor=white&link=https://github.com/faabfab/P12-SportSee_back-end-dashboard)](https://github.com/faabfab/P12-SportSee_back-end-dashboard)
+See on : [![Api on GitHub](https://img.shields.io/badge/|-ReactP12--SportSee__back--end--dashboard-blue?style=flat-square&logo=github&logoColor=white&link=https://github.com/faabfab/P12-SportSee_back-end-dashboard)](https://github.com/faabfab/P12-SportSee_back-end-dashboard)
 
 ## 6. Running Tests
 
