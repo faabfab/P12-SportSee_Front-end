@@ -6,6 +6,7 @@ import {
   PolarAngleAxis,
   Radar,
 } from 'recharts'
+import './../../scss/components/charts/performancesRadarChart.scss'
 
 /**
  * Composant qui affiche type d’activité réalisée de l'utilisateur
@@ -35,11 +36,33 @@ function PerformancesRadarChart({ kind, data }) {
         break
     }
   }
+
+  const isClient = typeof window === 'object'
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined,
+    }
+  }
+
+  const outerRadiusValue = () => {
+    if (getSize().width > 1430) {
+      return '100%'
+    }
+    if (1024 < getSize().width && getSize().width < 1430) {
+      return '80%'
+    }
+    if (getSize().width <= 1024) {
+      return '50%'
+    }
+  }
+
   return (
     <React.StrictMode>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={200}>
         <RadarChart
-          outerRadius={90}
+          outerRadius={outerRadiusValue()}
           data={data}
           margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
         >
