@@ -1,16 +1,13 @@
 import React from 'react'
 import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import './../../scss/components/charts/scorePieChart.scss'
-import ApiCall from './../ApiCall'
 
 /**
- * Composant qui affiche le score moyen sous forme d’un RadialBarChart en le récupérant sur l'api
- * @param {URL} param0 url de l'api contenant les informations utiles
- * @returns ScoreRadialBarChart
+ * Composant qui affiche le score moyen de l'utilisateur
+ * @param {Object} scoreName score or todayScore
+ * @returns void
  */
-function ScoreRadialBarChart({ apiUrl }) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
-
+function ScoreRadialBarChart({ scoreName }) {
   const data = [
     {
       uv: 100,
@@ -18,43 +15,38 @@ function ScoreRadialBarChart({ apiUrl }) {
     },
   ]
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  } else if (!isLoaded) {
-    return <div>Loading...</div>
-  } else {
-    return (
-      <React.StrictMode>
-        <div className="score_title">Score</div>
-        <div className="score_text">
-          <span>
-            {items.data.score * 100}%<br />
-          </span>{' '}
-          de votre objectif
-        </div>
-        <div className="score_chart">
-          <ResponsiveContainer width="90%" height={230}>
-            <RadialBarChart
-              innerRadius="90%"
-              outerRadius="100%"
-              data={data}
-              startAngle={180}
-              endAngle={180 * (1 - items.data.score)}
+  return (
+    <React.StrictMode>
+      <div className="score_title">Score</div>
+      <div className="score_text">
+        <span>
+          {scoreName * 100}%<br />
+        </span>{' '}
+        de votre objectif
+      </div>
+      <div className="score_chart">
+        <ResponsiveContainer width="90%" height={230}>
+          <RadialBarChart
+            innerRadius="90%"
+            outerRadius="100%"
+            data={data}
+            startAngle={180}
+            endAngle={180 * (1 - scoreName)}
+            cornerRadius={5}
+          >
+            <RadialBar
+              minAngle={15}
+              background
+              clockWise={true}
+              dataKey="uv"
               cornerRadius={5}
-            >
-              <RadialBar
-                minAngle={15}
-                background
-                clockWise={true}
-                dataKey="uv"
-                cornerRadius={5}
-              />
-            </RadialBarChart>
-          </ResponsiveContainer>
-        </div>
-      </React.StrictMode>
-    )
-  }
+            />
+            <circle fill="#fff" cx="50%" cy="50%" r={'72.5px'} />
+          </RadialBarChart>
+        </ResponsiveContainer>
+      </div>
+    </React.StrictMode>
+  )
 }
 
 export default ScoreRadialBarChart

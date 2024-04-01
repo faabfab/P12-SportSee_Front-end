@@ -1,16 +1,13 @@
 import React from 'react'
-import ApiCall from './../ApiCall'
 import './../../scss/components/charts/averageSessionsLineChart.scss'
 import { ResponsiveContainer, LineChart, XAxis, Tooltip, Line } from 'recharts'
 
 /**
- * Composant qui affichant la durée moyenne des sessions de l'utilisateur sous la forme d’un LineChart
- * @param {URL} param0 url de l'api contenant les informations utiles
- * @returns AverageSessionsLineChart
+ * Composants qui affiche la durée moyenne des sessions de l'utilisateur
+ * @param {Object} sessions durée des sessions par jour
+ * @returns
  */
-function AverageSessionsLineChart({ apiUrl }) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
-
+function AverageSessionsLineChart({ sessions }) {
   const tooltipLabelStyle = {
     display: 'none',
   }
@@ -62,44 +59,37 @@ function AverageSessionsLineChart({ apiUrl }) {
     }
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  } else if (!isLoaded) {
-    return <div>Loading...</div>
-  } else {
-    return (
-      <React.StrictMode>
-        <div className="sessions">
-          <div className="sessions_title">Durée moyenne des sessions</div>
-          <ResponsiveContainer width="100%" height={180}>
-            <LineChart data={items.data.sessions}>
-              <XAxis
-                dataKey="day"
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={xFormatDay}
-                fill="#ffffff"
-                tick={{ fill: 'white', opacity: 0.5, fontSize: '15px' }}
-              />
-              <Tooltip
-                labelStyle={tooltipLabelStyle}
-                itemStyle={tooltipItemStyle}
-                content={<CustomTooltip />}
-                cursor={false}
-              />
-              <Line
-                type="monotone"
-                dataKey="sessionLength"
-                stroke="#FFFFFF"
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </React.StrictMode>
-    )
-  }
+  return (
+    <React.StrictMode>
+      <div className="sessions">
+        <div className="sessions_title">Durée moyenne des sessions</div>
+        <ResponsiveContainer width="100%" height={180}>
+          <LineChart data={sessions}>
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={xFormatDay}
+              fill="#ffffff"
+              tick={{ fill: 'white', opacity: 0.5, fontSize: '15px' }}
+            />
+            <Tooltip
+              labelStyle={tooltipLabelStyle}
+              itemStyle={tooltipItemStyle}
+              content={<CustomTooltip />}
+              cursor={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="sessionLength"
+              stroke="#FFFFFF"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </React.StrictMode>
+  )
 }
-
 export default AverageSessionsLineChart

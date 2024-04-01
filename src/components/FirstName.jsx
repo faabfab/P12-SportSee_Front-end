@@ -1,12 +1,12 @@
 import React from 'react'
-import ApiCall from './ApiCall'
+// import ApiCall from './ApiCall'
 
 /**
  * Composant qui retourne le prénom de l'utilisateur sur le dashboard
  * @param {URL} param0 url de l'api contenant les informations utiles
  * @returns FirstName
  */
-function FirstName({ apiUrl }) {
+/*function FirstName({ apiUrl, firstName }) {
   const [error, isLoaded, items] = ApiCall(apiUrl)
 
   if (error) {
@@ -25,6 +25,15 @@ function FirstName({ apiUrl }) {
       </React.StrictMode>
     )
   }
+}*/
+function FirstName({ firstName }) {
+  return (
+    <React.StrictMode>
+      <h1>
+        Bonjour <span className="home_firstname">{firstName}</span>
+      </h1>
+    </React.StrictMode>
+  )
 }
 
 export default FirstName

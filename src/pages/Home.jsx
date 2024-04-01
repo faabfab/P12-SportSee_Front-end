@@ -1,5 +1,9 @@
 import React from 'react'
 import './../scss/pages/home.scss'
+import User from './../datas/user.json'
+import UserActivity from './../datas/user_activity.json'
+import UserAverageSessions from './../datas/user_average-sessions.json'
+import UserPerformance from './../datas/user_performance.json'
 import FirstName from '../components/FirstName'
 import KeyData from '../components/KeyDataCard'
 import ActivityBarChart from '../components/charts/ActivityBarChart'
@@ -12,29 +16,42 @@ import ScoreRadialChart from '../components/charts/ScoreRadialBarChart'
  * @returns HomePage
  */
 function Home() {
+  // const id = '18'
+  // const userUrl = 'http://localhost:3000/user/' + id
+  // const activityUrl = 'http://localhost:3000/user/' + id + '/activity'
+  // const averageSessionsUrl = 'http://localhost:3000/user/' + id + '/average-sessions'
+  // const performanceUrl = 'http://localhost:3000/user/' + id + '/performance'
+
+  const scoreName = User.data.score ? User.data.score : User.data.todayScore
+
   return (
     <React.StrictMode>
-      <FirstName apiUrl="http://localhost:3000/user/18" />
+      <FirstName firstName={User.data.userInfos.firstName} />
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       <div className="home_infos">
         <div className="home_infos_activities">
           <div className="home_infos_activities_weight">
-            <ActivityBarChart apiUrl="http://localhost:3000/user/18/activity" />
+            <ActivityBarChart sessions={UserActivity.data.sessions} />
           </div>
           <div className="home_infos_activities_part2">
             <div className="home_infos_activities_part2_average-sessions">
-              <AverageSessionsLineChart apiUrl="http://localhost:3000/user/18/average-sessions" />
+              <AverageSessionsLineChart
+                sessions={UserAverageSessions.data.sessions}
+              />
             </div>
             <div className="home_infos_activities_part2_performances">
-              <PerformancesRadarChart apiUrl="http://localhost:3000/user/18/performance" />
+              <PerformancesRadarChart
+                kind={UserPerformance.data.kind}
+                data={UserPerformance.data.data}
+              />
             </div>
             <div className="home_infos_activities_part2_score">
-              <ScoreRadialChart apiUrl="http://localhost:3000/user/18" />
+              <ScoreRadialChart scoreName={scoreName} />
             </div>
           </div>
         </div>
         <div className="home_infos_keyData">
-          <KeyData apiUrl="http://localhost:3000/user/18" />
+          <KeyData keyData={User.data.keyData} />
         </div>
       </div>
     </React.StrictMode>
