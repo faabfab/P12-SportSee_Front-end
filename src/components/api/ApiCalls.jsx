@@ -31,10 +31,15 @@ function ApiCall(apiUrl) {
   }, [apiUrl])
   return [error, isLoaded, items]
 }
+const id = '18'
+const userUrl = 'http://localhost:3000/user/' + id
+const activityUrl = 'http://localhost:3000/user/' + id + '/activity'
+const averageSessionsUrl =
+  'http://localhost:3000/user/' + id + '/average-sessions'
+const performanceUrl = 'http://localhost:3000/user/' + id + '/performance'
 
-function firstNameCall(apiUrl) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
-
+const firstNameCall = () => {
+  const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (!isLoaded) {
@@ -44,4 +49,81 @@ function firstNameCall(apiUrl) {
   }
 }
 
-export { ApiCall, firstNameCall }
+const activityCall = () => {
+  const [error, isLoaded, items] = ApiCall(activityUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return items.data.sessions
+  }
+}
+
+const averageSessionsCall = () => {
+  const [error, isLoaded, items] = ApiCall(averageSessionsUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return items.data.sessions
+  }
+}
+
+const performanceKindCall = () => {
+  const [error, isLoaded, items] = ApiCall(performanceUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return items.data.kind
+  }
+}
+
+const performanceDataCall = () => {
+  const [error, isLoaded, items] = ApiCall(performanceUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return items.data.data
+  }
+}
+
+const scoreCall = () => {
+  const [error, isLoaded, items] = ApiCall(userUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    const scoreName = items.data.score
+      ? items.data.score
+      : items.data.todayScore
+    return scoreName
+  }
+}
+
+const keyDataCall = () => {
+  const [error, isLoaded, items] = ApiCall(userUrl)
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return items.data.keyData
+  }
+}
+
+export {
+  firstNameCall,
+  activityCall,
+  averageSessionsCall,
+  performanceKindCall,
+  performanceDataCall,
+  scoreCall,
+  keyDataCall,
+}

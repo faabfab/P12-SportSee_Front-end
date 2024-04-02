@@ -1,9 +1,16 @@
 import React from 'react'
 import './../scss/pages/home.scss'
-import User from './../datas/user.json'
-import UserActivity from './../datas/user_activity.json'
-import UserAverageSessions from './../datas/user_average-sessions.json'
-import UserPerformance from './../datas/user_performance.json'
+
+import {
+  firstNameCall,
+  activityCall,
+  averageSessionsCall,
+  performanceKindCall,
+  performanceDataCall,
+  scoreCall,
+  keyDataCall,
+} from './../components/api/ApiCalls'
+
 import FirstName from '../components/FirstName'
 import KeyData from '../components/KeyDataCard'
 import ActivityBarChart from '../components/charts/ActivityBarChart'
@@ -16,42 +23,32 @@ import ScoreRadialChart from '../components/charts/ScoreRadialBarChart'
  * @returns HomePage
  */
 function Home() {
-  // const id = '18'
-  // const userUrl = 'http://localhost:3000/user/' + id
-  // const activityUrl = 'http://localhost:3000/user/' + id + '/activity'
-  // const averageSessionsUrl = 'http://localhost:3000/user/' + id + '/average-sessions'
-  // const performanceUrl = 'http://localhost:3000/user/' + id + '/performance'
-
-  const scoreName = User.data.score ? User.data.score : User.data.todayScore
-
   return (
     <React.StrictMode>
-      <FirstName firstName={User.data.userInfos.firstName} />
+      <FirstName firstName={firstNameCall()} />
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       <div className="home_infos">
         <div className="home_infos_activities">
           <div className="home_infos_activities_weight">
-            <ActivityBarChart sessions={UserActivity.data.sessions} />
+            <ActivityBarChart sessions={activityCall()} />
           </div>
           <div className="home_infos_activities_part2">
             <div className="home_infos_activities_part2_average-sessions">
-              <AverageSessionsLineChart
-                sessions={UserAverageSessions.data.sessions}
-              />
+              <AverageSessionsLineChart sessions={averageSessionsCall()} />
             </div>
             <div className="home_infos_activities_part2_performances">
               <PerformancesRadarChart
-                kind={UserPerformance.data.kind}
-                data={UserPerformance.data.data}
+                kind={performanceKindCall()}
+                data={performanceDataCall()}
               />
             </div>
             <div className="home_infos_activities_part2_score">
-              <ScoreRadialChart scoreName={scoreName} />
+              <ScoreRadialChart scoreName={scoreCall()} />
             </div>
           </div>
         </div>
         <div className="home_infos_keyData">
-          <KeyData keyData={User.data.keyData} />
+          <KeyData keyData={keyDataCall()} />
         </div>
       </div>
     </React.StrictMode>
