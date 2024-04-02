@@ -27,7 +27,6 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import ApiCall from './../ApiCall'
 import {
   ResponsiveContainer,
   RadarChart,
@@ -35,61 +34,77 @@ import {
   PolarAngleAxis,
   Radar,
 } from 'recharts'
+import './../../scss/components/charts/performancesRadarChart.scss'
 
 /**
- * Composant qui affiche le type d’activité réalisée de l'utilisateur sous forme d’un radar chart
- * @param {URL} param0 url de l'api contenant les informations utiles
- * @returns PerformancesRadarChart
+ * Composant qui affiche type d’activité réalisée de l'utilisateur
+ * @param {Object} kind type d’activité
+ * @param {Object} data données associés
+ * @returns void
  */
-function PerformancesRadarChart({ apiUrl }) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
+function PerformancesRadarChart({ kind, data }) {
+  const kinds = kind
+  const kindArray = Object.entries(kinds)
 
-  if (error) {
-    return &lt;div>Error: {error.message}&lt;/div>
-  } else if (!isLoaded) {
-    return &lt;div>Loading...&lt;/div>
-  } else {
-    const kinds = items.data.kind
-    const kindArray = Object.entries(kinds)
-
-    const kindFormatter = (perfsData) => {
-      switch (kindArray[perfsData - 1][1]) {
-        case 'cardio':
-          return 'Cardio'
-        case 'energy':
-          return 'Énergie'
-        case 'endurance':
-          return 'Endurance'
-        case 'strength':
-          return 'Force'
-        case 'speed':
-          return 'Vitesse'
-        case 'intensity':
-          return 'Intensité'
-        default:
-          break
-      }
+  const kindFormatter = (perfsData) => {
+    switch (kindArray[perfsData - 1][1]) {
+      case 'cardio':
+        return 'Cardio'
+      case 'energy':
+        return 'Énergie'
+      case 'endurance':
+        return 'Endurance'
+      case 'strength':
+        return 'Force'
+      case 'speed':
+        return 'Vitesse'
+      case 'intensity':
+        return 'Intensité'
+      default:
+        break
     }
-    return (
-      &lt;React.StrictMode>
-        &lt;ResponsiveContainer width="100%" height="100%">
-          &lt;RadarChart
-            outerRadius={90}
-            data={items.data.data}
-            margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
-          >
-            &lt;PolarGrid gridType="circle" />
-            &lt;PolarAngleAxis
-              dataKey="kind"
-              tickFormatter={kindFormatter}
-              tick={{ fill: 'white', fontSize: '12px' }}
-            />
-            &lt;Radar name="" dataKey="value" fill="#ff0101" fillOpacity={0.6} />
-          &lt;/RadarChart>
-        &lt;/ResponsiveContainer>
-      &lt;/React.StrictMode>
-    )
   }
+
+  const isClient = typeof window === 'object'
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined,
+    }
+  }
+
+  const outerRadiusValue = () => {
+    if (getSize().width > 1430) {
+      return '100%'
+    }
+    if (1024 &lt; getSize().width &amp;&amp; getSize().width &lt; 1430) {
+      return '80%'
+    }
+    if (getSize().width &lt;= 1024) {
+      return '50%'
+    }
+  }
+
+  return (
+    &lt;React.StrictMode>
+      &lt;ResponsiveContainer width="100%" height={200}>
+        &lt;RadarChart
+          outerRadius={outerRadiusValue()}
+          data={data}
+          margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
+        >
+          &lt;PolarGrid gridType="circle" />
+          &lt;PolarAngleAxis
+            dataKey="kind"
+            tickFormatter={kindFormatter}
+            tick={{ fill: 'white', fontSize: '12px' }}
+          />
+          &lt;Radar name="" dataKey="value" fill="#ff0101" fillOpacity={0.6} />
+        &lt;/RadarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/React.StrictMode>
+  )
 }
 
 export default PerformancesRadarChart
@@ -103,13 +118,13 @@ export default PerformancesRadarChart
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#activityCall">activityCall</a></li><li><a href="global.html#averageSessionsCall">averageSessionsCall</a></li><li><a href="global.html#firstNameCall">firstNameCall</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#keyDataCall">keyDataCall</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#performanceDataCall">performanceDataCall</a></li><li><a href="global.html#performanceKindCall">performanceKindCall</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#scoreCall">scoreCall</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 29 2024 17:37:19 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 02 2024 10:31:45 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

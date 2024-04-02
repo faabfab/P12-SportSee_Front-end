@@ -5,7 +5,7 @@ import { ResponsiveContainer, LineChart, XAxis, Tooltip, Line } from 'recharts'
 /**
  * Composants qui affiche la durée moyenne des sessions de l'utilisateur
  * @param {Object} sessions durée des sessions par jour
- * @returns
+ * @returns void
  */
 function AverageSessionsLineChart({ sessions }) {
   const tooltipLabelStyle = {

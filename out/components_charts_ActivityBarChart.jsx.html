@@ -27,7 +27,6 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import ApiCall from './../ApiCall'
 import './../../scss/components/charts/activityBarChart.scss'
 import {
   BarChart,
@@ -41,13 +40,11 @@ import {
 } from 'recharts'
 
 /**
- * Composant qui affiche l'activité quotidienne sous forme d’un BarChart de l'utilisateur
- * @param {URL} param0 url de l'api contenant les informations utiles
- * @returns ActivityBarChart
+ * Composant qui affiche mon activité quotidienne de l'utilisateur
+ * @param {Object} sessions jour, poids, calories dépensées
+ * @returns void
  */
-function ActivityBarChart({ apiUrl }) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
-
+function ActivityBarChart({ sessions }) {
   const tooltipLabelStyle = {
     display: 'none',
   }
@@ -75,7 +72,7 @@ function ActivityBarChart({ apiUrl }) {
       return (
         &lt;div style={tooltipWrapperStyle}>
           &lt;p style={tooltipItemStyle}>{payload[0].value}Kg&lt;/p>
-          &lt;p style={tooltipItemStyle}>{payload[1].value}KCal&lt;/p>
+          &lt;p style={tooltipItemStyle}>{payload[1].value / 1000}KCal&lt;/p>
         &lt;/div>
       )
     }
@@ -98,9 +95,9 @@ function ActivityBarChart({ apiUrl }) {
 
   const xTickFormat = (x) => {
     let i = 0
-    items.data.sessions.forEach((act) => {
+    sessions.forEach((act) => {
       if (act.day === x) {
-        i = items.data.sessions.indexOf(act)
+        i = sessions.indexOf(act)
       }
     })
     return i + 1
@@ -110,66 +107,60 @@ function ActivityBarChart({ apiUrl }) {
     return y / 1000
   }
 
-  if (error) {
-    return &lt;div>Error: {error.message}&lt;/div>
-  } else if (!isLoaded) {
-    return &lt;div>Loading...&lt;/div>
-  } else {
-    return (
-      &lt;React.StrictMode>
-        &lt;div className="weight">
-          &lt;div className="weight_text_title">Activité quotidienne&lt;/div>
-          &lt;ResponsiveContainer width="100%" height={270}>
-            &lt;BarChart data={items.data.sessions}>
-              &lt;CartesianGrid strokeDasharray="1 3" vertical={false} />
-              &lt;XAxis
-                dataKey="day"
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={xTickFormat}
-              />
-              &lt;YAxis
-                orientation="right"
-                dataKey="calories"
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={yTickFormat}
-              />
-              &lt;Tooltip
-                separator=""
-                wrapperStyle={tooltipWrapperStyle}
-                itemStyle={tooltipItemStyle}
-                contentStyle={tooltipWrapperStyle}
-                labelStyle={tooltipLabelStyle}
-                content={&lt;CustomTooltip />}
-                cursor={{ fill: '#DFDFDF' }}
-              />
-              &lt;Legend
-                verticalAlign="top"
-                height={80}
-                iconType="circle"
-                iconSize="7"
-                margin={{ top: 0, left: '20px', right: 0, bottom: 0 }}
-                formatter={renderLegendText}
-              />
-              &lt;Bar
-                dataKey="kilogram"
-                fill="#282D30"
-                barSize={7}
-                radius={[3, 3, 0, 0]}
-              />
-              &lt;Bar
-                dataKey="calories"
-                fill="#E60000"
-                barSize={7}
-                radius={[3, 3, 0, 0]}
-              />
-            &lt;/BarChart>
-          &lt;/ResponsiveContainer>
-        &lt;/div>
-      &lt;/React.StrictMode>
-    )
-  }
+  return (
+    &lt;React.StrictMode>
+      &lt;div className="weight">
+        &lt;div className="weight_text_title">Activité quotidienne&lt;/div>
+        &lt;ResponsiveContainer width="100%" height={270}>
+          &lt;BarChart data={sessions}>
+            &lt;CartesianGrid strokeDasharray="1 3" vertical={false} />
+            &lt;XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={xTickFormat}
+            />
+            &lt;YAxis
+              orientation="right"
+              dataKey="calories"
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={yTickFormat}
+            />
+            &lt;Tooltip
+              separator=""
+              wrapperStyle={tooltipWrapperStyle}
+              itemStyle={tooltipItemStyle}
+              contentStyle={tooltipWrapperStyle}
+              labelStyle={tooltipLabelStyle}
+              content={&lt;CustomTooltip />}
+              cursor={{ fill: '#DFDFDF' }}
+            />
+            &lt;Legend
+              verticalAlign="top"
+              height={80}
+              iconType="circle"
+              iconSize="7"
+              margin={{ top: 0, left: '20px', right: 0, bottom: 0 }}
+              formatter={renderLegendText}
+            />
+            &lt;Bar
+              dataKey="kilogram"
+              fill="#282D30"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+            &lt;Bar
+              dataKey="calories"
+              fill="#E60000"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+          &lt;/BarChart>
+        &lt;/ResponsiveContainer>
+      &lt;/div>
+    &lt;/React.StrictMode>
+  )
 }
 
 export default ActivityBarChart
@@ -183,13 +174,13 @@ export default ActivityBarChart
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#activityCall">activityCall</a></li><li><a href="global.html#averageSessionsCall">averageSessionsCall</a></li><li><a href="global.html#firstNameCall">firstNameCall</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#keyDataCall">keyDataCall</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#performanceDataCall">performanceDataCall</a></li><li><a href="global.html#performanceKindCall">performanceKindCall</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#scoreCall">scoreCall</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 29 2024 17:37:19 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 02 2024 10:31:45 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

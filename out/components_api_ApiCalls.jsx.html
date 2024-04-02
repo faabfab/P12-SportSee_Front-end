@@ -1,4 +1,32 @@
-import { useState, useEffect } from 'react'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/api/ApiCalls.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/api/ApiCalls.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from 'react'
 
 /**
  * Composant qui retourne les information de l'api suivant une url sous forme de tableau de 3 éléments
@@ -49,9 +77,9 @@ const performanceUrl = 'http://localhost:3000/user/' + id + '/performance'
 const firstNameCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.userInfos.firstName
   }
@@ -64,9 +92,9 @@ const firstNameCall = () => {
 const activityCall = () => {
   const [error, isLoaded, items] = ApiCall(activityUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.sessions
   }
@@ -79,9 +107,9 @@ const activityCall = () => {
 const averageSessionsCall = () => {
   const [error, isLoaded, items] = ApiCall(averageSessionsUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.sessions
   }
@@ -94,9 +122,9 @@ const averageSessionsCall = () => {
 const performanceKindCall = () => {
   const [error, isLoaded, items] = ApiCall(performanceUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.kind
   }
@@ -109,9 +137,9 @@ const performanceKindCall = () => {
 const performanceDataCall = () => {
   const [error, isLoaded, items] = ApiCall(performanceUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.data
   }
@@ -124,9 +152,9 @@ const performanceDataCall = () => {
 const scoreCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     const scoreName = items.data.score
       ? items.data.score
@@ -142,9 +170,9 @@ const scoreCall = () => {
 const keyDataCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return &lt;div>Error: {error.message}&lt;/div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return &lt;div>Loading...&lt;/div>
   } else {
     return items.data.keyData
   }
@@ -159,3 +187,26 @@ export {
   scoreCall,
   keyDataCall,
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#activityCall">activityCall</a></li><li><a href="global.html#averageSessionsCall">averageSessionsCall</a></li><li><a href="global.html#firstNameCall">firstNameCall</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#keyDataCall">keyDataCall</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#performanceDataCall">performanceDataCall</a></li><li><a href="global.html#performanceKindCall">performanceKindCall</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#scoreCall">scoreCall</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 02 2024 10:31:45 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

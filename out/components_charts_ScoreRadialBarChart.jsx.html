@@ -29,16 +29,13 @@
             <pre class="prettyprint source linenums"><code>import React from 'react'
 import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import './../../scss/components/charts/scorePieChart.scss'
-import ApiCall from './../ApiCall'
 
 /**
- * Composant qui affiche le score moyen sous forme d’un RadialBarChart en le récupérant sur l'api
- * @param {URL} param0 url de l'api contenant les informations utiles
- * @returns ScoreRadialBarChart
+ * Composant qui affiche le score moyen de l'utilisateur
+ * @param {Object} scoreName score or todayScore
+ * @returns void
  */
-function ScoreRadialBarChart({ apiUrl }) {
-  const [error, isLoaded, items] = ApiCall(apiUrl)
-
+function ScoreRadialBarChart({ scoreName }) {
   const data = [
     {
       uv: 100,
@@ -46,43 +43,41 @@ function ScoreRadialBarChart({ apiUrl }) {
     },
   ]
 
-  if (error) {
-    return &lt;div>Error: {error.message}&lt;/div>
-  } else if (!isLoaded) {
-    return &lt;div>Loading...&lt;/div>
-  } else {
-    return (
-      &lt;React.StrictMode>
-        &lt;div className="score_title">Score&lt;/div>
-        &lt;div className="score_text">
+  return (
+    &lt;React.StrictMode>
+      &lt;div className="score_title">Score&lt;/div>
+      &lt;div className="score_text">
+        &lt;div className="score_text_container">
           &lt;span>
-            {items.data.score * 100}%&lt;br />
+            {scoreName * 100}%&lt;br />
           &lt;/span>{' '}
           de votre objectif
         &lt;/div>
-        &lt;div className="score_chart">
-          &lt;ResponsiveContainer width="90%" height={230}>
-            &lt;RadialBarChart
-              innerRadius="90%"
-              outerRadius="100%"
-              data={data}
-              startAngle={180}
-              endAngle={180 * (1 - items.data.score)}
+      &lt;/div>
+      &lt;div className="score_chart">
+        &lt;ResponsiveContainer width="90%" height={230}>
+          &lt;RadialBarChart
+            cx="50%"
+            cy="50%"
+            innerRadius="65%"
+            barSize={10}
+            data={data}
+            startAngle={180}
+            endAngle={180 * (1 - scoreName)}
+          >
+            &lt;circle fill="#fff" cx="50%" cy="50%" r="26%" />
+            &lt;RadialBar
+              minAngle={15}
+              background
+              clockWise={true}
+              dataKey="uv"
               cornerRadius={5}
-            >
-              &lt;RadialBar
-                minAngle={15}
-                background
-                clockWise={true}
-                dataKey="uv"
-                cornerRadius={5}
-              />
-            &lt;/RadialBarChart>
-          &lt;/ResponsiveContainer>
-        &lt;/div>
-      &lt;/React.StrictMode>
-    )
-  }
+            />
+          &lt;/RadialBarChart>
+        &lt;/ResponsiveContainer>
+      &lt;/div>
+    &lt;/React.StrictMode>
+  )
 }
 
 export default ScoreRadialBarChart
@@ -96,13 +91,13 @@ export default ScoreRadialBarChart
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#ApiCall">ApiCall</a></li><li><a href="global.html#AverageSessionsLineChart">AverageSessionsLineChart</a></li><li><a href="global.html#CardKeyData">CardKeyData</a></li><li><a href="global.html#FirstName">FirstName</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#LeftNav">LeftNav</a></li><li><a href="global.html#PerformancesRadarChart">PerformancesRadarChart</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#activityCall">activityCall</a></li><li><a href="global.html#averageSessionsCall">averageSessionsCall</a></li><li><a href="global.html#firstNameCall">firstNameCall</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#keyDataCall">keyDataCall</a></li><li><a href="global.html#keyDataCard">keyDataCard</a></li><li><a href="global.html#performanceDataCall">performanceDataCall</a></li><li><a href="global.html#performanceKindCall">performanceKindCall</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#scoreCall">scoreCall</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 29 2024 17:37:19 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 02 2024 10:31:45 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
