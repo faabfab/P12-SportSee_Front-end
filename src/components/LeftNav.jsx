@@ -10,6 +10,8 @@ import icon4 from './../assets/img/icon4.svg'
  * @returns LeftNav
  */
 function LeftNav() {
+  const today = new Date()
+  const year = today.getFullYear()
   return (
     <div className="left">
       <div className="left_nav">
@@ -26,7 +28,7 @@ function LeftNav() {
           <img src={icon4} alt="icon4" />
         </Link>
       </div>
-      <dir className="left_copyright">Copyright, SportSee 2020</dir>
+      <dir className="left_copyright">Copyright, SportSee {year}</dir>
     </div>
   )
 }
