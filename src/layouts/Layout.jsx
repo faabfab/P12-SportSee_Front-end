@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './../components/Header'
-import LeftNav from './../components/LeftNav'
+import Header from './../components/Header.jsx'
+import LeftNav from './../components/LeftNav.jsx'
 import { Outlet } from 'react-router-dom'
 import './../scss/layout/layout.scss'
 
