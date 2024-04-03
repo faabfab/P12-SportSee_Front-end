@@ -27,7 +27,7 @@ function Home() {
   return (
     <React.StrictMode>
       <FirstName firstName={User.data.userInfos.firstName} />
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
       <div className="home_infos">
         <div className="home_infos_activities">
           <div className="home_infos_activities_weight">
