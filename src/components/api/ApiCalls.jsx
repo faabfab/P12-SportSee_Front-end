@@ -49,7 +49,7 @@ const performanceUrl = 'http://localhost:3000/user/' + id + '/performance'
 const firstNameCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your firstname not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -64,7 +64,7 @@ const firstNameCall = () => {
 const activityCall = () => {
   const [error, isLoaded, items] = ApiCall(activityUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your activities not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -79,7 +79,9 @@ const activityCall = () => {
 const averageSessionsCall = () => {
   const [error, isLoaded, items] = ApiCall(averageSessionsUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return (
+      <div>Error: {error.message} Sorry your average sessions not loaded</div>
+    )
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -94,7 +96,7 @@ const averageSessionsCall = () => {
 const performanceKindCall = () => {
   const [error, isLoaded, items] = ApiCall(performanceUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your performances not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -109,7 +111,7 @@ const performanceKindCall = () => {
 const performanceDataCall = () => {
   const [error, isLoaded, items] = ApiCall(performanceUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your performances not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -124,7 +126,7 @@ const performanceDataCall = () => {
 const scoreCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your score not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
@@ -142,7 +144,7 @@ const scoreCall = () => {
 const keyDataCall = () => {
   const [error, isLoaded, items] = ApiCall(userUrl)
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message} Sorry your keys datas not loaded</div>
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
