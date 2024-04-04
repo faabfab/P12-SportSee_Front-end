@@ -48,7 +48,7 @@ function PerformancesRadarChart({ kind, data }) {
 
   const outerRadiusValue = () => {
     const size = getSize().width - 60
-    if (size > 1430) {
+    if (size >= 1430) {
       return '100%'
     }
     if (1024 < size && size < 1430) {
