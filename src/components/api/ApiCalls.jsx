@@ -119,6 +119,12 @@ const performanceDataCall = () => {
   }
 }
 
+function scoreNameValue(userUrl) {
+  const [error, isLoaded, items] = ApiCall(userUrl)
+  const scoreName = items.data.score ? items.data.score : items.data.todayScore
+  return [error, isLoaded, scoreName]
+}
+
 /**
  * Fonction qui retourne score moyen de l'utilisateur après appel à l'API
  * @returns {Object} score moyen

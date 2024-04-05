@@ -23,6 +23,8 @@ import ScoreRadialChart from '../components/charts/ScoreRadialBarChart'
  * @returns HomePage
  */
 function Home() {
+  const ScoreValue = scoreCall()
+
   return (
     <React.StrictMode>
       <FirstName firstName={firstNameCall()} />
@@ -43,7 +45,7 @@ function Home() {
               />
             </div>
             <div className="home_infos_activities_part2_score">
-              <ScoreRadialChart scoreName={scoreCall()} />
+              <ScoreRadialChart scoreName={ScoreValue} />
             </div>
           </div>
         </div>

@@ -8,9 +8,13 @@ import './../../scss/components/charts/scorePieChart.scss'
  * @returns void
  */
 function ScoreRadialBarChart({ scoreName }) {
+  if (typeof scoreName != 'number') {
+    scoreName = 0
+  }
+  const scoreValue = 180 * (1 - Number(scoreName))
   const data = [
     {
-      uv: 100,
+      uv: 10,
       fill: '#ff0101',
     },
   ]
@@ -35,7 +39,7 @@ function ScoreRadialBarChart({ scoreName }) {
             barSize={10}
             data={data}
             startAngle={180}
-            endAngle={180 * (1 - scoreName)}
+            endAngle={scoreValue}
           >
             <circle fill="#fff" cx="50%" cy="50%" r="26%" />
             <RadialBar
