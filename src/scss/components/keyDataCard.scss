@@ -11,10 +11,11 @@
   margin-bottom: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   & img {
     width: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
+    //padding-left: 30px;
+    //padding-right: 30px;
   }
 }
 
